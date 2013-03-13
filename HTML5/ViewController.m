@@ -11,13 +11,15 @@
 @interface ViewController ()
 
 @end
-
 @implementation ViewController
+@synthesize webView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	// Do any additional setup after loading the view.
+    
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://dbproj.sfsu.edu/~dbold/SNFC/"]]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -26,4 +28,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    [webView release];
+    [super dealloc];
+}
 @end
